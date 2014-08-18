@@ -12,7 +12,13 @@
     <link href="css/app.css" rel="stylesheet">
 
     <!-- angularjs scripts -->
-    <script src="lib/js/ionic.bundle.js"></script>
+    <!--    <script src="lib/js/ionic.bundle.js"></script> -->
+    <script src="lib/js/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/js/angular/angular-animate.js"></script>
+    <script src="lib/js/angular/angular-sanitize.js"></script>
+    <script src="lib/js/angular/angular-touch.js"></script>
+    <script src="lib/js/angular-ui/angular-ui-router.js"></script>
+
     <!-- cordova script -->
     <script src="cordova.js"></script>
 
@@ -31,7 +37,7 @@
       <ion-header-bar type="bar-transparent" title="'Help out'"></ion-header-bar>
 
       <swipe-cards>
-        <swipe-card on-swipe-left="cardSwiped()" on-swipe-right="cardSwiped()" id="start-card">
+        <swipe-card on-card-swipe-left="cardSwiped()" on-card-swipe-right="cardSwiped()" id="start-card">
           <div class="front">
             Swipe left or right for a new card. Tap to flip
           </div>
@@ -39,7 +45,7 @@
             Tap to flip back. Swipe left or right for a new card
           </div>
         </swipe-card>
-        <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwiped($index)" on-swipe-right="cardSwiped($index)">
+        <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe-left="cardSwiped($index)" on-card-swipe-right="cardSwiped($index)">
           <div ng-controller="CardCtrl" class="front">
             <div class="title">
               {{card.title}}

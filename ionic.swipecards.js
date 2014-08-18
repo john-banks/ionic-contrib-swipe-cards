@@ -347,8 +347,8 @@
       replace: true,
       transclude: true,
       scope: {
-        onSwipeLeft: '&',
-        onSwipeRight: '&',
+        onCardSwipeLeft: '&',
+        onCardSwipeRight: '&',
         onFlipFront: '&',
         onFlipBack: '&',
         onDestroy: '&'
@@ -364,14 +364,14 @@
               $timeout(function() {
                 //Event trigger to let the rootScope know that the card has been swiped
                 $rootScope.$emit('swipeCard.pop');
-                $scope.onSwipeLeft();
+                $scope.onCardSwipeLeft();
               });
             },
             onSwipeRight: function() {
               $timeout(function() {
                 //Event trigger to let the rootScope know that the card has been swiped
                 $rootScope.$emit('swipeCard.pop');
-                $scope.onSwipeRight();
+                $scope.onCardSwipeRight();
               });
             },
             onFlipFront: function() {
