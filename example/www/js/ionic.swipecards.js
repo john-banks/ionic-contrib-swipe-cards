@@ -233,19 +233,19 @@
       var self = this;
       
       ionic.onGesture('release', function(e) {
-        window.requestAnimationFrame(function() { self._doTap(e) });
+        ionic.requestAnimationFrame(function() { self._doTap(e) });
       }, this.el);
       
       ionic.onGesture('dragstart', function(e) {
-        window.requestAnimationFrame(function() { self._doDragStart(e) });
+        ionic.requestAnimationFrame(function() { self._doDragStart(e) });
       }, this.el);
 
       ionic.onGesture('drag', function(e) {
-        window.requestAnimationFrame(function() { self._doDrag(e) });
+        ionic.requestAnimationFrame(function() { self._doDrag(e) });
       }, this.el);
 
       ionic.onGesture('dragend', function(e) {
-        window.requestAnimationFrame(function() { self._doDragEnd(e) });
+        ionic.requestAnimationFrame(function() { self._doDragEnd(e) });
       }, this.el);
     },
 
@@ -318,8 +318,12 @@
 
       this.rotationAngle = Math.atan(o/this.touchDistance) * this.rotationDirection;
 
-      this.x = this.startX + (e.gesture.deltaX);
-      this.y = this.startY + (e.gesture.deltaY);
+      if(!this.$scope.lockX){
+          this.x = this.startX + (e.gesture.deltaX);
+      }
+      if(!this.$scope.lockY){
+          this.y = this.startY + (e.gesture.deltaY);
+      }
       this.el.style[ionic.CSS.TRANSFORM] = 'translate3d(' + this.x + 'px, ' + this.y  + 'px, 0) rotate(' + (this.rotationAngle || 0) + 'rad)';
       
       if(this.flipped) {
@@ -351,6 +355,8 @@
         onCardSwipeRight: '&',
         onFlipFront: '&',
         onFlipBack: '&',
+        lockX : '@',
+        lockY : '@',
         onDestroy: '&'
       },
       compile: function(element, attr) {
@@ -360,6 +366,7 @@
           // Instantiate our card view
           var swipeableCard = new SwipeableCardView({
             el: el,
+            "$scope" : $scope,
             onSwipeLeft: function() {
               $timeout(function() {
                 //Event trigger to let the rootScope know that the card has been swiped

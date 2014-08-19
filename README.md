@@ -11,7 +11,7 @@ Include `ionic.swipecards.js` after the rest of your Ionic and Angular includes.
 
 ```html
 <swipe-cards>
-  <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+  <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe-left="cardSwiped($index)" on-card-swipe-right="cardSwiped($index)">
     Card content here
   </swipe-card>
 </swipe-cards>
@@ -35,5 +35,9 @@ $scope.cardSwiped = function(index) {
 };
 ```
 
+To lock swiping use lock-x or lock-y
 
+<swipe-card lock-x>
+    Card content here
+</swipe-card>
 
