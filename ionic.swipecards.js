@@ -261,6 +261,9 @@
     },
     
     _doTap: function(e) {
+      if(!this.$scope.enableFlip){
+          return;
+      }
       //Check if we are allowed to perform a gesture
       if(this.gestureEnabled) {
       	var self = this;
@@ -357,6 +360,7 @@
         onFlipBack: '&',
         lockX : '@',
         lockY : '@',
+        enableFlip : '@',
         onDestroy: '&'
       },
       compile: function(element, attr) {

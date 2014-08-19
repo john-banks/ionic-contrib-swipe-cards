@@ -35,9 +35,9 @@ $scope.cardSwiped = function(index) {
 };
 ```
 
-To lock swiping use lock-x or lock-y
+To lock swiping use lock-x or lock-y, and enable-flip to allow tapping to flip the card
 
-<swipe-card lock-x>
+<swipe-card lock-x="true" enable-flip="true">
     Card content here
 </swipe-card>
 
