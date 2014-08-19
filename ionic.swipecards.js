@@ -233,19 +233,19 @@
       var self = this;
       
       ionic.onGesture('release', function(e) {
-        window.requestAnimationFrame(function() { self._doTap(e) });
+        ionic.requestAnimationFrame(function() { self._doTap(e) });
       }, this.el);
       
       ionic.onGesture('dragstart', function(e) {
-        window.requestAnimationFrame(function() { self._doDragStart(e) });
+        ionic.requestAnimationFrame(function() { self._doDragStart(e) });
       }, this.el);
 
       ionic.onGesture('drag', function(e) {
-        window.requestAnimationFrame(function() { self._doDrag(e) });
+        ionic.requestAnimationFrame(function() { self._doDrag(e) });
       }, this.el);
 
       ionic.onGesture('dragend', function(e) {
-        window.requestAnimationFrame(function() { self._doDragEnd(e) });
+        ionic.requestAnimationFrame(function() { self._doDragEnd(e) });
       }, this.el);
     },
 
